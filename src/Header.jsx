@@ -1,5 +1,7 @@
 import { LogoutLink } from "./LogoutLink";
 import { Login } from "./Login";
+import { useState } from "react";
+import { Signup } from "./Signup";
 
 export function Header() {
   return (
@@ -32,8 +34,12 @@ export function Header() {
               </a>
             </li>
             <div class="gap-2 d-flex">
-              <button class="btn btn-success px-4">Log In</button>
-              <button class="btn btn-success px-4">Sign Up</button>
+              <button class="btn btn-success px-4" data-bs-toggle="modal" data-bs-target="#LoginModal">
+                Log In
+              </button>
+              <button class="btn btn-success px-4" data-bs-toggle="modal" data-bs-target="#SignupModal">
+                Sign Up
+              </button>
             </div>
           </ul>
 
@@ -71,10 +77,59 @@ export function Header() {
               </li>
               <li>
                 <a class="dropdown-item" href="#">
-                  Sign out
+                  <LogoutLink />
                 </a>
               </li>
             </ul>
+          </div>
+        </div>
+      </div>
+      {/* Login Modal */}
+      <div class="modal fade" id="LoginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">
+                Log In
+              </h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <Login />
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                Close
+              </button>
+              <button type="button" class="btn btn-primary">
+                Save changes
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Signup Modal */}
+      <div class="modal fade" id="SignupModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">
+                Signup
+              </h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <Signup />
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                Close
+              </button>
+              <button type="button" class="btn btn-primary">
+                Save changes
+              </button>
+            </div>
           </div>
         </div>
       </div>

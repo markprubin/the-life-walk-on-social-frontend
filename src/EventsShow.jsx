@@ -5,6 +5,10 @@ export function EventsShow(props) {
     props.onUpdateEvent(props.event.id, params, () => event.target.reset());
   };
 
+  const handleClickFavorite = () => {
+    props.onCreateFavorite(props.event);
+  };
+
   const handleClick = () => {
     props.onDestroyEvent(props.event);
   };
@@ -15,7 +19,7 @@ export function EventsShow(props) {
       <h2>{props.event.name}</h2>
       <p>Description: {props.event.description}</p>
       <p>Address: {props.event.address}</p>
-      <img src={props.event.image_url} />
+      <img src={props.event.image_url} width="300px" height="auto" />
       <p>Start: {props.event.start_time} </p>
       <p>End: {props.event.end_time} </p>
 
@@ -43,6 +47,9 @@ export function EventsShow(props) {
           Delete Event
         </button>
       </form>
+      <button onClick={handleClickFavorite} type="submit">
+        Add to Favorites
+      </button>
     </div>
   );
 }

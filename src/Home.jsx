@@ -12,6 +12,7 @@ export function Home() {
   const [events, setEvents] = useState([]);
   const [isEventsShowVisible, setIsEventsShowVisible] = useState(false);
   const [currentEvent, setCurrentEvent] = useState({});
+  const [favorites, setFavorites] = useState([]);
 
   const handleIndexEvents = () => {
     console.log("handleIndexEvents");
@@ -65,16 +66,28 @@ export function Home() {
     });
   };
 
+  const handleCreateFavorite = (params, successCallback) => {
+    console.log("handleCreateFavorite", params);
+    const eventsfavorite = { event_id: params.id };
+    axios.post("http://localhost:3000/favorites.json", eventsfavorite).then((response) => {
+      setFavorites([...favorites, response.data]);
+      successCallback();
+    });
+  };
+
   useEffect(handleIndexEvents, []);
 
   return (
     <div>
-      <Login />
-      <Signup />
       <EventsNew onCreateEvent={handleCreateEvent} />
       <EventsIndex events={events} onShowEvent={handleShowEvent} />
       <Modal show={isEventsShowVisible} onClose={handleClose}>
-        <EventsShow event={currentEvent} onUpdateEvent={handleUpdateEvent} onDestroyEvent={handleDestroyEvent} />
+        <EventsShow
+          event={currentEvent}
+          onUpdateEvent={handleUpdateEvent}
+          onDestroyEvent={handleDestroyEvent}
+          onCreateFavorite={handleCreateFavorite}
+        />
       </Modal>
     </div>
   );
