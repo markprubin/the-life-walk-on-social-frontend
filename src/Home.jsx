@@ -35,9 +35,34 @@ export function Home() {
     setCurrentEvent(event);
   };
 
+  const handleUpdateEvent = (id, params, successCallback) => {
+    console.log("handleUpdateEvent", params);
+    axios.patch(`http://localhost:3000/events/${id}.json`, params).then((response) => {
+      setEvents(
+        events.map((event) => {
+          if (event.id === response.data.id) {
+            return response.data;
+          } else {
+            return event;
+          }
+        })
+      );
+      successCallback();
+      handleClose();
+    });
+  };
+
   const handleClose = () => {
     console.log("handleClose");
     setIsEventsShowVisible(false);
+  };
+
+  const handleDestroyEvent = (event) => {
+    console.log("handleDestroyEvent", event);
+    axios.delete(`http://localhost:3000/events/${event.id}.json`).then((response) => {
+      setEvents(events.filter((p) => p.id !== event.id));
+      handleClose();
+    });
   };
 
   useEffect(handleIndexEvents, []);
@@ -49,7 +74,7 @@ export function Home() {
       <EventsNew onCreateEvent={handleCreateEvent} />
       <EventsIndex events={events} onShowEvent={handleShowEvent} />
       <Modal show={isEventsShowVisible} onClose={handleClose}>
-        <EventsShow event={currentEvent} />
+        <EventsShow event={currentEvent} onUpdateEvent={handleUpdateEvent} onDestroyEvent={handleDestroyEvent} />
       </Modal>
     </div>
   );
