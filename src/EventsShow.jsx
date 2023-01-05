@@ -37,10 +37,10 @@ export function EventsShow(props) {
           Image Link: <input defaultValue={props.event.image_url} name="image_url" type="text" />
         </div>
         <div>
-          Start of Event: <input defaultValue={props.event.start_time} name="start_time" type="datetime" />
+          Start of Event: <input defaultValue={props.event.start_time} name="start_time" type="datetime-local" />
         </div>
         <div>
-          End of Event: <input defaultValue={props.event.end_time} name="end_time" type="datetime" />
+          End of Event: <input defaultValue={props.event.end_time} name="end_time" type="datetime-local" />
         </div>
         <button type="submit">Update Event</button>
         <button onClick={handleClick} type="submit">

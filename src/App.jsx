@@ -4,6 +4,7 @@ import { Footer } from "./Footer";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { About } from "./About";
 import { Favorites } from "./Favorites";
+import { EventsNew } from "./EventsNew";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/favorites" element={<Favorites />} />
+        <Route path="/newevent" element={<EventsNew />} />
       </Routes>
       <Footer />
     </BrowserRouter>

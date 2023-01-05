@@ -79,7 +79,6 @@ export function Home() {
 
   return (
     <div>
-      <EventsNew onCreateEvent={handleCreateEvent} />
       <EventsIndex events={events} onShowEvent={handleShowEvent} />
       <Modal show={isEventsShowVisible} onClose={handleClose}>
         <EventsShow

@@ -1,10 +1,19 @@
-import React, { useState } from "react";
+import axios from "axios";
 
-export function EventsNew(props) {
+export function EventsNew() {
+  const handleCreateEvent = (params) => {
+    axios.post("http://localhost:3000/events.json", params).then((response) => {
+      console.log(response, "Creating an event!");
+      window.location.href = "/";
+    });
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const params = new FormData(event.target);
-    props.onCreateEvent(params, () => event.target.reset());
+    console.log("handleSubmit", params);
+    handleCreateEvent(params);
+    event.target.reset();
   };
 
   return (

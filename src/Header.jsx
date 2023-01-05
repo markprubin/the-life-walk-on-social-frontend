@@ -55,7 +55,7 @@ export function Header() {
             </a>
             <ul class="dropdown-menu text-small">
               <li>
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item" href="/newevent">
                   Host an Event
                 </a>
               </li>
