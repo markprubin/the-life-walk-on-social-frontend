@@ -60,7 +60,7 @@ export function Header() {
                 </a>
               </li>
               <li>
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item" href="/favorites">
                   Favorite Events
                 </a>
               </li>

@@ -1,3 +1,5 @@
+import React, { useState } from "react";
+
 export function EventsNew(props) {
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -22,10 +24,10 @@ export function EventsNew(props) {
           Image URL: <input name="image_url" type="text" />
         </div>
         <div>
-          Start (DD-MM-YYYY): <input name="start_time" type="text" />
+          Start of Event: <input name="start_time" type="datetime-local" />
         </div>
         <div>
-          End (DD-MM-YYYY): <input name="end_time" type="text" />
+          End of Event: <input name="end_time" type="datetime-local" />
         </div>
         <button type="submit">Create Event</button>
       </form>
