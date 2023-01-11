@@ -6,6 +6,7 @@ import { About } from "./About";
 import { FavoritesIndex } from "./FavoritesIndex";
 import { EventsNew } from "./EventsNew";
 import { Welcome } from "./Welcome";
+import { UsersIndex } from "./UsersIndex";
 import { useLocation } from "react-router-dom";
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/favorites" element={<FavoritesIndex />} />
         <Route path="/newevent" element={<EventsNew />} />
+        <Route path="/profile" element={<UsersIndex />} />
       </Routes>
 
       <Footer />

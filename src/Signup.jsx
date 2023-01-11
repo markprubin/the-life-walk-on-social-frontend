@@ -13,7 +13,7 @@ export function Signup() {
       .then((response) => {
         console.log(response.data);
         event.target.reset();
-        window.location.href = "/"; // Change this to hide a modal, redirect to a specific page, etc.
+        window.location.href = "/home"; // Change this to hide a modal, redirect to a specific page, etc.
       })
       .catch((error) => {
         console.log(error.response.data.errors);
@@ -38,6 +38,9 @@ export function Signup() {
         </div>
         <div>
           Email: <input name="email" type="email" />
+        </div>
+        <div>
+          Profile Picture: <input name="image_url" type="text" />
         </div>
         <div>
           Password: <input name="password" type="password" />

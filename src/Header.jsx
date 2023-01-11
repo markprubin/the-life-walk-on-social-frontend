@@ -72,7 +72,7 @@ export function Header() {
                 </a>
               </li>
               <li>
-                <a class="dropdown-item" href="#" disabled>
+                <a class="dropdown-item" href="/profile" disabled>
                   Profile
                 </a>
               </li>

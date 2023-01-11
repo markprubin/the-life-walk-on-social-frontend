@@ -4,13 +4,13 @@ export function EventsIndex(props) {
   return (
     <div>
       <div class="p-4 p-md-5 mb-4 rounded text-bg-dark">
-        <div class="col-5 p-8 float-end">
+        <div class="col-5 p-4 float-end">
           <img
-            class="img-thumbnail"
+            class="row img-thumbnail p-8"
             src="https://images.unsplash.com/photo-1506869640319-fe1a24fd76dc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
           />
         </div>
-        <div class="col-md-4 px-4">
+        <div class="col-md-2 px-4">
           <h1 class="display-4 fst">Welcome to The Life Walk-On Social</h1>
           <p class="lead my-3">
             Please browse the current events below. If you haven't already, we would love for you to sign up and add

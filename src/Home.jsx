@@ -19,14 +19,6 @@ export function Home() {
     });
   };
 
-  const handleCreateEvent = (params, successCallback) => {
-    console.log("handleCreateEvent", params);
-    axios.post("http://localhost:3000/events.json", params).then((response) => {
-      setEvents([...events, response.data]);
-      successCallback();
-    });
-  };
-
   const handleShowEvent = (event) => {
     console.log("handleShowEvent", event);
     setIsEventsShowVisible(true);
