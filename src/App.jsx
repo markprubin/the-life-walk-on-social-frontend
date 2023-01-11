@@ -3,19 +3,23 @@ import { Home } from "./Home";
 import { Footer } from "./Footer";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { About } from "./About";
-import { Favorites } from "./Favorites";
+import { FavoritesIndex } from "./FavoritesIndex";
 import { EventsNew } from "./EventsNew";
+import { Welcome } from "./Welcome";
+import { useLocation } from "react-router-dom";
 
 function App() {
   return (
     <BrowserRouter>
       <Header />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/Home" element={<Home />} />
+        <Route path="/" element={<Welcome />} />
         <Route path="/about" element={<About />} />
-        <Route path="/favorites" element={<Favorites />} />
+        <Route path="/favorites" element={<FavoritesIndex />} />
         <Route path="/newevent" element={<EventsNew />} />
       </Routes>
+
       <Footer />
     </BrowserRouter>
   );

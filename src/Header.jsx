@@ -15,29 +15,36 @@ export function Header() {
 
           <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
             <li>
+              <a href="/home" class="nav-link px-2 link-dark">
+                Home
+              </a>
+            </li>
+            <li>
               <a href="/about" class="nav-link px-2 link-secondary">
                 About
               </a>
             </li>
             <li>
-              <a href="#" class="nav-link px-2 link-dark">
-                List of Events
+              <a href="/favorites" class="nav-link px-2 link-dark">
+                Your Favorites
               </a>
             </li>
-            <li>
-              <a href="#" class="nav-link px-2 link-dark">
-                Connect With Others
-              </a>
-            </li>
-
-            <div class="gap-2 d-flex">
-              <button class="btn btn-success px-4" data-bs-toggle="modal" data-bs-target="#LoginModal">
-                Log In
-              </button>
-              <button class="btn btn-success px-4" data-bs-toggle="modal" data-bs-target="#SignupModal">
-                Sign Up
-              </button>
-            </div>
+            {localStorage.jwt === undefined ? (
+              <div class="gap-2 d-flex">
+                <button class="btn btn-success px-4" data-bs-toggle="modal" data-bs-target="#LoginModal">
+                  Log In
+                </button>
+                <button class="btn btn-success px-4" data-bs-toggle="modal" data-bs-target="#SignupModal">
+                  Sign Up
+                </button>
+              </div>
+            ) : (
+              <div>
+                <a href="/" class="nav-link px-2 link-dark">
+                  <LogoutLink />
+                </a>
+              </div>
+            )}
           </ul>
 
           <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
@@ -65,18 +72,22 @@ export function Header() {
                 </a>
               </li>
               <li>
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item" href="#" disabled>
                   Profile
                 </a>
               </li>
               <li>
                 <hr class="dropdown-divider" />
               </li>
-              <li>
-                <a class="dropdown-item" href="#">
-                  <LogoutLink />
-                </a>
-              </li>
+              {localStorage.jwt === undefined ? (
+                <></>
+              ) : (
+                <li>
+                  <a class="dropdown-item" href="#">
+                    <LogoutLink />
+                  </a>
+                </li>
+              )}
             </ul>
           </div>
         </div>
@@ -87,20 +98,12 @@ export function Header() {
           <div class="modal-content">
             <div class="modal-header">
               <h1 class="modal-title fs-5" id="exampleModalLabel">
-                Log In
+                Welcome back!
               </h1>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
               <Login />
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                Close
-              </button>
-              <button type="button" class="btn btn-primary">
-                Save changes
-              </button>
             </div>
           </div>
         </div>
@@ -111,21 +114,13 @@ export function Header() {
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h1 class="modal-title fs-5" id="exampleModalLabel">
-                Signup
-              </h1>
+              <div class="modal-title fs-5" id="exampleModalLabel">
+                <img src="src/assets/TLWO Short.png" width="auto" height="100" />
+              </div>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
               <Signup />
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                Close
-              </button>
-              <button type="button" class="btn btn-primary">
-                Save changes
-              </button>
             </div>
           </div>
         </div>

@@ -1,12 +1,9 @@
 import { EventsIndex } from "./EventsIndex";
-import { EventsNew } from "./EventsNew";
 import { EventsShow } from "./EventsShow";
 import { Modal } from "./Modal";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { Signup } from "./Signup";
-import { Login } from "./Login";
-import { LogoutLink } from "./LogoutLink";
+import Calendar from "./components/Calendar";
 
 export function Home() {
   const [events, setEvents] = useState([]);
@@ -75,11 +72,26 @@ export function Home() {
     });
   };
 
+  const handleDestroyFavorite = (favorite) => {
+    console.log("handleDestroyFavorite");
+    axios.delete(`http://localhost:3000/favorites/${favorite.id}.json`).then((response) => {
+      setFavorites(favorites.filter((f) => f.id !== favorite.id));
+      handleClose();
+    });
+  };
+
   useEffect(handleIndexEvents, []);
 
   return (
     <div>
-      <EventsIndex events={events} onShowEvent={handleShowEvent} />
+      <EventsIndex
+        events={events}
+        onShowEvent={handleShowEvent}
+        onCreateFavorite={handleCreateFavorite}
+        onDestroyFavorite={handleDestroyFavorite}
+      />
+      <h1 className="calendar-text">Calendar</h1>
+      <Calendar />
       <Modal show={isEventsShowVisible} onClose={handleClose}>
         <EventsShow
           event={currentEvent}
