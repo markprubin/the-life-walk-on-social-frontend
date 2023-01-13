@@ -1,4 +1,4 @@
-# the-life-walk-on-social-frontend
+# README
 
 # The Life Walk On Social (Frontend)
 
