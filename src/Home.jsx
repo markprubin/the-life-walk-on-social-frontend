@@ -55,15 +55,19 @@ export function Home() {
     });
   };
 
-  const handleCreateFavorite = (params, successCallback) => {
+  const handleCreateFavorite = (params) => {
     console.log("handleCreateFavorite", params);
     const eventsfavorite = { event_id: params.id };
-    axios.post("http://localhost:3000/favorites.json", eventsfavorite).then((response) => {
-      setFavorites([...favorites, response.data]);
-      successCallback();
-    });
+    axios
+      .post("http://localhost:3000/favorites.json", eventsfavorite)
+      .then((response) => {
+        setFavorites([...favorites, response.data]);
+        handleIndexEvents();
+      })
+      .catch((e) => {
+        console.log(e);
+      });
   };
-
   const handleDestroyFavorite = (favorite) => {
     console.log("handleDestroyFavorite");
     axios.delete(`http://localhost:3000/favorites/${favorite.id}.json`).then((response) => {
@@ -72,7 +76,7 @@ export function Home() {
     });
   };
 
-  useEffect(handleIndexEvents, []);
+  useEffect(() => handleIndexEvents, []);
 
   return (
     <div>

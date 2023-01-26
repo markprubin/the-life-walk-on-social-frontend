@@ -34,7 +34,7 @@ export function EventsIndex(props) {
                   Add to Favorites
                 </button>
                 <br />
-                <button>Favorites: {event.favorites}</button>
+                <h5>Favorites: {event.favorites}</h5>
               </div>
             </div>
           ))}
