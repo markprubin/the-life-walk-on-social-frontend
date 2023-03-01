@@ -54,7 +54,7 @@ export function Home() {
       handleClose();
     });
   };
-
+  // ADD FAVORITE
   const handleCreateFavorite = (params) => {
     console.log("handleCreateFavorite", params);
     const eventsfavorite = { event_id: params.id };

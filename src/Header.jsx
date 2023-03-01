@@ -1,10 +1,22 @@
 import { LogoutLink } from "./LogoutLink";
 import { Login } from "./Login";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Signup } from "./Signup";
+import axios from "axios";
 import { Link } from "react-router-dom";
 
 export function Header() {
+  const [user, setUser] = useState([]);
+
+  const handleIndexUsers = () => {
+    console.log("handleIndexUsers");
+    axios.get("http://localhost:3000/users.json").then((response) => {
+      console.log(response.data);
+      setUser(response.data);
+    });
+  };
+
+  useEffect(handleIndexUsers, []);
   return (
     <header class="p-3 mb-3 border-bottom shadow">
       <div class="container">
@@ -50,46 +62,45 @@ export function Header() {
           <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
             <input type="search" class="form-control" placeholder="Search..." aria-label="Search" />
           </form>
-
-          <div class="dropdown text-end">
-            <a
-              href="#"
-              class="d-block link-dark text-decoration-none dropdown-toggle"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle" />
-            </a>
-            <ul class="dropdown-menu text-small">
-              <li>
-                <a class="dropdown-item" href="/newevent">
-                  Host an Event
-                </a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="/favorites">
-                  Favorite Events
-                </a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="/profile" disabled>
-                  Profile
-                </a>
-              </li>
-              <li>
-                <hr class="dropdown-divider" />
-              </li>
-              {localStorage.jwt === undefined ? (
-                <></>
-              ) : (
+          {localStorage.jwt === undefined ? (
+            <></>
+          ) : (
+            <div class="dropdown text-end">
+              <a
+                href="#"
+                class="d-block link-dark text-decoration-none dropdown-toggle"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <img src={user.image_url} alt="mdo" width="32" height="32" class="rounded-circle" />
+              </a>
+              <ul class="dropdown-menu text-small">
+                <li>
+                  <a class="dropdown-item" href="/newevent">
+                    Host an Event
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="/favorites">
+                    Favorite Events
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="/profile" disabled>
+                    Profile
+                  </a>
+                </li>
+                <li>
+                  <hr class="dropdown-divider" />
+                </li>
                 <li>
                   <a class="dropdown-item" href="#">
                     <LogoutLink />
                   </a>
                 </li>
-              )}
-            </ul>
-          </div>
+              </ul>
+            </div>
+          )}
         </div>
       </div>
       {/* Login Modal */}
