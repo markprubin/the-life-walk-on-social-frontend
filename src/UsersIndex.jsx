@@ -62,6 +62,27 @@ export function UsersIndex() {
             <div>
               First Name: <input defaultValue={users?.first_name} name="first_name" type="text" />
             </div>
+            <div>
+              Last Name: <input defaultValue={users?.last_name} name="last_name" type="text" />
+            </div>
+            <div>
+              Profile Picture: <input defaultValue={users?.image_url} name="image_url" type="text" />
+            </div>
+            <div>
+              E-Mail: <input defaultValue={users?.email} name="email" type="text" />
+            </div>
+            <div>
+              Phone Number: <input defaultValue={users?.phone} name="phone" type="text" />
+            </div>
+            <div>
+              Birth Date: <input defaultValue={users?.birth_date} name="birth_date]" type="date" />
+            </div>
+            <div>
+              Address: <input defaultValue={users?.home_address} name="home_address" type="text" />
+            </div>
+            <div>
+              Bio: <input defaultValue={users?.bio} name="bio" type="text" />
+            </div>
           </form>
         </Modal.Body>
         <Modal.Footer>
