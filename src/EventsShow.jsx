@@ -58,9 +58,7 @@ export function EventsShow(props) {
       <button onClick={handleClickFavorite} type="submit">
         Add to Favorites
       </button>
-      <button onClick={handleClickFavorite} type="submit">
-        Remove from Favorites
-      </button>
+      <button type="submit">Remove from Favorites</button>
     </div>
   );
 }

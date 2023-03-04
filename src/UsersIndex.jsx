@@ -1,41 +1,27 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import Button from "react-bootstrap/Button";
-import Modal from "react-bootstrap/Modal";
 
 export function UsersIndex() {
-  const [users, setUsers] = useState();
-  const [show, setShow] = useState(false);
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
-  // Display User Profile
+  const [users, setUsers] = useState({});
 
   const handleIndexUsers = () => {
-    console.log("handleIndexUsers");
     axios.get("http://localhost:3000/users.json").then((response) => {
-      console.log(response.data);
       setUsers(response.data);
     });
   };
 
   useEffect(handleIndexUsers, []);
 
-  // Update User Profile
   const handleUpdateUser = (id, params) => {
-    console.log("hi");
     axios.patch(`http://localhost:3000/users/${id}.json`, params).then((response) => {
-      setUsers(response);
-      handleClose();
+      setUsers(response.data);
     });
   };
 
-  const handleSubmit = (user) => {
-    user.preventDefault();
-    console.log("hi");
-    const params = new FormData(user.target);
-    console.log(params);
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const params = new FormData(event.target);
+    handleUpdateUser(users.id, params);
   };
 
   return (
@@ -49,51 +35,34 @@ export function UsersIndex() {
           <h4>Bio:</h4>
           <p class="card-text">{users?.bio}</p>
         </div>
-        <Button variant="primary" onClick={handleShow}>
-          Edit Profile
-        </Button>
+        <form onSubmit={handleSubmit}>
+          <div>
+            First Name: <input defaultValue={users?.first_name} name="first_name" type="text" />
+          </div>
+          <div>
+            Last Name: <input defaultValue={users?.last_name} name="last_name" type="text" />
+          </div>
+          <div>
+            Profile Picture: <input defaultValue={users?.image_url} name="image_url" type="text" />
+          </div>
+          <div>
+            E-Mail: <input defaultValue={users?.email} name="email" type="text" />
+          </div>
+          <div>
+            Phone Number: <input defaultValue={users?.phone} name="phone" type="text" />
+          </div>
+          <div>
+            Birth Date: <input defaultValue={users?.birth_date} name="birth_date]" type="date" />
+          </div>
+          <div>
+            Address: <input defaultValue={users?.home_address} name="home_address" type="text" />
+          </div>
+          <div>
+            Bio: <input defaultValue={users?.bio} name="bio" type="text" />
+          </div>
+          <button type="submit">Update</button>
+        </form>
       </div>
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Edit Profile</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <form onSubmit={handleSubmit}>
-            <div>
-              First Name: <input defaultValue={users?.first_name} name="first_name" type="text" />
-            </div>
-            <div>
-              Last Name: <input defaultValue={users?.last_name} name="last_name" type="text" />
-            </div>
-            <div>
-              Profile Picture: <input defaultValue={users?.image_url} name="image_url" type="text" />
-            </div>
-            <div>
-              E-Mail: <input defaultValue={users?.email} name="email" type="text" />
-            </div>
-            <div>
-              Phone Number: <input defaultValue={users?.phone} name="phone" type="text" />
-            </div>
-            <div>
-              Birth Date: <input defaultValue={users?.birth_date} name="birth_date]" type="date" />
-            </div>
-            <div>
-              Address: <input defaultValue={users?.home_address} name="home_address" type="text" />
-            </div>
-            <div>
-              Bio: <input defaultValue={users?.bio} name="bio" type="text" />
-            </div>
-          </form>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button type="submit" variant="primary">
-            Save Changes
-          </Button>
-        </Modal.Footer>
-      </Modal>
     </div>
   );
 }
