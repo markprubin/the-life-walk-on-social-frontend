@@ -1,6 +1,15 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 export function EventsIndex(props) {
+  const [favoritesList, setFavoritesList] = useState([]);
+
+  useEffect(() => {
+    axios.get("http://localhost:3000/users.json").then((response) => {
+      setFavoritesList(response.data.favorites?.map((favorite) => favorite.event_id));
+    });
+  }, []);
+
   return (
     <div>
       <div class="p-4 p-md-5 mb-4 rounded text-bg-dark">
@@ -30,7 +39,12 @@ export function EventsIndex(props) {
                 <button className="btn btn-info" onClick={() => props.onShowEvent(event)}>
                   Event Info
                 </button>
-                <button className="btn btn-warning" onClick={() => props.onCreateFavorite(event)} type="submit">
+                <button
+                  className="btn btn-warning"
+                  onClick={() => props.onCreateFavorite(event)}
+                  disabled={favoritesList.find((favorite) => favorite === event.id)}
+                  type="submit"
+                >
                   Add to Favorites
                 </button>
                 <br />

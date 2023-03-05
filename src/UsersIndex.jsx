@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 export function UsersIndex() {
-  const [users, setUsers] = useState({});
+  const [users, setUsers] = useState([]);
 
   const handleIndexUsers = () => {
     axios.get("http://localhost:3000/users.json").then((response) => {

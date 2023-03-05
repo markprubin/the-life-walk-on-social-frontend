@@ -68,6 +68,7 @@ export function Home() {
         console.log(e);
       });
   };
+
   const handleDestroyFavorite = (favorite) => {
     console.log("handleDestroyFavorite");
     axios.delete(`http://localhost:3000/favorites/${favorite.id}.json`).then((response) => {
