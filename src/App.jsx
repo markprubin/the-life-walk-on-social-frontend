@@ -7,6 +7,7 @@ import { FavoritesIndex } from "./FavoritesIndex";
 import { EventsNew } from "./EventsNew";
 import { Welcome } from "./Welcome";
 import { UsersIndex } from "./UsersIndex";
+import { Tasks } from "./Tasks";
 function App() {
   return (
     <BrowserRouter>
@@ -18,6 +19,7 @@ function App() {
         <Route path="/favorites" element={<FavoritesIndex />} />
         <Route path="/newevent" element={<EventsNew />} />
         <Route path="/profile" element={<UsersIndex />} />
+        <Route path="/tasks" element={<Tasks />} />
       </Routes>
 
       <Footer />
