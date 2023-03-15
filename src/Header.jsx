@@ -91,6 +91,11 @@ export function Header() {
                   </a>
                 </li>
                 <li>
+                  <a class="dropdown-item" href="/tasks" disabled>
+                    View Tasks
+                  </a>
+                </li>
+                <li>
                   <hr class="dropdown-divider" />
                 </li>
                 <li>
