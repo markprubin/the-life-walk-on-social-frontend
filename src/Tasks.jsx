@@ -17,12 +17,11 @@ export function Tasks() {
   return (
     <>
       <form>
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">
-            Task
-          </label>
-          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
-          <div id="emailHelp" class="form-text">
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="floatingInput" placeholder="Write Your Task Here" />
+          <label for="floatingInput">Add Task</label>
+
+          <div id="taskcomplete" class="form-text">
             You better carry this out.
           </div>
         </div>
