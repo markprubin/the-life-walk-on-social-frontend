@@ -3,6 +3,8 @@ import axios from "axios";
 
 export function Tasks() {
   const [tasks, setTasks] = useState([]);
+  const [getTasks, setGetTasks] = useState(false);
+  const [completed, setCompleted] = useState(false);
 
   const handleViewTasks = () => {
     console.log("Viewing Tasks");
@@ -15,18 +17,24 @@ export function Tasks() {
   const handleCreateTask = (params) => {
     axios.post(`http://localhost:3000/tasks.json`, params).then((response) => {
       console.log(response, "Creating Task.");
+      setGetTasks((prev) => !prev);
     });
   };
 
   const handleSubmit = (task) => {
     task.preventDefault();
     const params = new FormData(task.target);
-    console.log("handleSubmit", params);
+    console.log({ title: params.get("title"), status: completed });
     handleCreateTask(params);
     task.target.reset();
   };
 
-  useEffect(handleViewTasks, []);
+  const handleComplete = (e) => {
+    console.log(e);
+    setCompleted(e.target.checked);
+  };
+
+  useEffect(() => handleViewTasks, [getTasks]);
 
   return (
     <>
@@ -42,8 +50,14 @@ export function Tasks() {
         </div>
 
         <div class="mb-3 mx-5 form-check">
-          <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-
+          <input
+            name="status"
+            type="checkbox"
+            class="form-check-input"
+            id="exampleCheck1"
+            checked={completed}
+            onChange={handleComplete}
+          />
           <label class="form-check-label" for="exampleCheck1">
             Already completed?
           </label>
