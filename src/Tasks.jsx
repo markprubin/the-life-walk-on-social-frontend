@@ -45,8 +45,9 @@ export function Tasks() {
     console.log(task);
     axios.delete(`http://localhost:3000/tasks/${task.id}.json`).then(handleViewTasks);
   };
+
   const updateTask = (id, params) => {
-    console.log(task);
+    console.log(id);
     axios.patch(`http://localhost:3000/tasks/${id}.json`, params).then((response) => {
       setTasks(response.data);
     });
@@ -55,8 +56,8 @@ export function Tasks() {
   const handleUpdate = (task) => {
     task.preventDefault();
     const params = new FormData(task.target);
-    updateTask(task.id, params);
-    handleViewTasks;
+    updateTask(task.target.id, params);
+    handleViewTasks();
   };
 
   useEffect(() => handleViewTasks, [getTasks]);
@@ -159,8 +160,8 @@ export function Tasks() {
             <div class="modal-body">
               <form onSubmit={handleUpdate}>
                 <h6>
-                  <input defaultValue={tasks?.title} name="title" type="text">
-                    {tasks?.title}
+                  <input defaultValue={tasks.title} name="title" type="text">
+                    {tasks.title}
                   </input>
                 </h6>
                 <div class="modal-footer">
