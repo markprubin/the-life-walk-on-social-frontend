@@ -36,11 +36,15 @@ export function Header() {
                 About
               </a>
             </li>
-            <li>
-              <a href="/favorites" class="nav-link px-2 link-dark">
-                Your Favorites
-              </a>
-            </li>
+            {localStorage.jwt === undefined ? (
+              <></>
+            ) : (
+              <li>
+                <a href="/favorites" class="nav-link px-2 link-dark">
+                  Your Favorites
+                </a>
+              </li>
+            )}
             {localStorage.jwt === undefined ? (
               <div class="gap-2 d-flex">
                 <button class="btn btn-success px-4" data-bs-toggle="modal" data-bs-target="#LoginModal">

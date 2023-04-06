@@ -28,7 +28,7 @@ export function FavoritesIndex() {
   }, [favorites]);
   return (
     <div>
-      <h1>Your Favorites</h1>
+      <h1>Your Favorited Events</h1>
       {favoritesList}
     </div>
   );
