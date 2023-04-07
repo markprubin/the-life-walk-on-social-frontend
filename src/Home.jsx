@@ -10,6 +10,7 @@ export function Home() {
   const [isEventsShowVisible, setIsEventsShowVisible] = useState(false);
   const [currentEvent, setCurrentEvent] = useState({});
   const [favorites, setFavorites] = useState([]);
+  const [favoritesList, setFavoritesList] = useState([]);
 
   const handleIndexEvents = () => {
     console.log("handleIndexEvents");
@@ -63,21 +64,22 @@ export function Home() {
       .then((response) => {
         setFavorites([...favorites, response.data]);
         handleIndexEvents();
+        axios.get("http://localhost:3000/users.json").then((response) => {
+          setFavoritesList(response.data.favorites?.map((favorite) => favorite.event_id));
+        });
       })
       .catch((e) => {
         console.log(e);
       });
   };
 
-  const handleDestroyFavorite = (favorite) => {
-    console.log("handleDestroyFavorite");
-    axios.delete(`http://localhost:3000/favorites/${favorite.id}.json`).then((response) => {
-      setFavorites(favorites.filter((f) => f.id !== favorite.id));
-      handleClose();
-    });
-  };
-
   useEffect(() => handleIndexEvents, []);
+
+  useEffect(() => {
+    axios.get("http://localhost:3000/users.json").then((response) => {
+      setFavoritesList(response.data.favorites?.map((favorite) => favorite.event_id));
+    });
+  }, []);
 
   return (
     <div>
@@ -85,7 +87,7 @@ export function Home() {
         events={events}
         onShowEvent={handleShowEvent}
         onCreateFavorite={handleCreateFavorite}
-        onDestroyFavorite={handleDestroyFavorite}
+        favoritesList={favoritesList}
       />
       <h1 className="calendar-text">Calendar</h1>
       <Calendar />

@@ -9,11 +9,7 @@ export function EventsShow(props) {
     props.onCreateFavorite(props.event);
   };
 
-  const handleRemoveFavorite = () => {
-    props.onDestroyFavorite(props.event);
-  };
-
-  const handleClick = () => {
+  const handleClickRemove = () => {
     props.onDestroyEvent(props.event);
   };
   const admin = localStorage.getItem("admin");
@@ -48,7 +44,7 @@ export function EventsShow(props) {
             End of Event: <input defaultValue={props.event.end_time} name="end_time" type="datetime-local" />
           </div>
           <button type="submit">Update Event</button>
-          <button onClick={handleClick} type="submit">
+          <button onClick={handleClickRemove} type="submit">
             Delete Event
           </button>
         </form>
@@ -57,6 +53,9 @@ export function EventsShow(props) {
       )}
       <button onClick={handleClickFavorite} type="submit">
         Add to Favorites
+      </button>
+      <button onClick={handleRemoveFavorite} type="submit">
+        Remove Favorite
       </button>
     </div>
   );

@@ -2,13 +2,11 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 export function EventsIndex(props) {
-  const [favoritesList, setFavoritesList] = useState([]);
-
-  useEffect(() => {
-    axios.get("http://localhost:3000/users.json").then((response) => {
-      setFavoritesList(response.data.favorites?.map((favorite) => favorite.event_id));
-    });
-  }, []);
+  // useEffect(() => {
+  //   axios.get("http://localhost:3000/users.json").then((response) => {
+  //     setFavoritesList(response.data.favorites?.map((favorite) => favorite.event_id));
+  //   });
+  // }, []);
 
   return (
     <div>
@@ -42,7 +40,7 @@ export function EventsIndex(props) {
                 <button
                   className="btn btn-warning"
                   onClick={() => props.onCreateFavorite(event)}
-                  disabled={favoritesList.find((favorite) => favorite === event.id)}
+                  disabled={props.favoritesList.find((favorite) => favorite === event.id)}
                   type="submit"
                 >
                   Add to Favorites
