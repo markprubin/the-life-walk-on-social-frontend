@@ -37,14 +37,18 @@ export function EventsIndex(props) {
                 <button className="btn btn-info" onClick={() => props.onShowEvent(event)}>
                   Event Info
                 </button>
-                <button
-                  className="btn btn-warning"
-                  onClick={() => props.onCreateFavorite(event)}
-                  disabled={props.favoritesList.find((favorite) => favorite === event.id)}
-                  type="submit"
-                >
-                  Add to Favorites
-                </button>
+                {localStorage.jwt === undefined ? (
+                  <></>
+                ) : (
+                  <button
+                    className="btn btn-warning"
+                    onClick={() => props.onCreateFavorite(event)}
+                    disabled={props.favoritesList.find((favorite) => favorite === event.id)}
+                    type="submit"
+                  >
+                    Add to Favorites
+                  </button>
+                )}
                 <br />
                 <h5>Favorites: {event.favorites}</h5>
               </div>
