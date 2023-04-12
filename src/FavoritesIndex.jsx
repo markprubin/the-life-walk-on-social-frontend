@@ -15,9 +15,9 @@ export function FavoritesIndex() {
   };
 
   const handleDestroyFavorite = (favorite) => {
-    console.log("handleDestroyFavorite");
-    axios.delete(`http://localhost:3000/favorites/${favorite.id}.json`).then((response) => {
-      setFavorites(favorites.filter((f) => f.id !== favorite.id));
+    console.log(favorite);
+    axios.delete(`http://localhost:3000/favorites/${favorite.table_id}.json`).then((response) => {
+      setFavorites(favorites.filter((f) => f.table_id !== favorite.table_id));
     });
   };
 
@@ -28,11 +28,13 @@ export function FavoritesIndex() {
       if (favorite === null) {
         return;
       }
+      const date = new Date(favorite.event.start_time);
+      const formattedDate = date.toDateString("en-US");
       return (
         <ListItem
           favorite={favorite}
-          title={favorite.name}
-          date={favorite.start_time}
+          title={favorite.event.name}
+          date={formattedDate}
           style="favorite"
           handleDestroyFavorite={handleDestroyFavorite}
         />

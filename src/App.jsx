@@ -8,7 +8,6 @@ import { EventsNew } from "./EventsNew";
 import { Welcome } from "./Welcome";
 import { UsersIndex } from "./UsersIndex";
 import { Tasks } from "./Tasks";
-import { FavoritesIndexTest } from "./FavoritesIndexTest";
 function App() {
   return (
     <BrowserRouter>
@@ -21,7 +20,6 @@ function App() {
         <Route path="/newevent" element={<EventsNew />} />
         <Route path="/profile" element={<UsersIndex />} />
         <Route path="/tasks" element={<Tasks />} />
-        <Route path="/favoritestest" element={<FavoritesIndexTest />} />
       </Routes>
 
       <Footer />
