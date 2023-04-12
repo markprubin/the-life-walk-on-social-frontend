@@ -5,10 +5,6 @@ export function EventsShow(props) {
     props.onUpdateEvent(props.event.id, params, () => event.target.reset());
   };
 
-  const handleClickFavorite = () => {
-    props.onCreateFavorite(props.event);
-  };
-
   const handleClickRemove = () => {
     props.onDestroyEvent(props.event);
   };
@@ -52,9 +48,6 @@ export function EventsShow(props) {
       ) : (
         <></>
       )}
-      <button onClick={handleClickFavorite} type="submit">
-        Add to Favorites
-      </button>
     </div>
   );
 }

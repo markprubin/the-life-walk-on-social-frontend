@@ -40,7 +40,7 @@ export function Tasks() {
   const finishTask = (task) => {
     console.log(task);
     const request = { ...task, status: true };
-    axios.patch(`http://localhost:3000/tasks/${task.id}.json`, request).then(console.log);
+    axios.patch(`http://localhost:3000/tasks/${task.id}.json`, request).then(handleViewTasks);
   };
 
   const removeTask = (task) => {

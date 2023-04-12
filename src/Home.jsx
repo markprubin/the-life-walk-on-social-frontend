@@ -90,15 +90,10 @@ export function Home() {
         onCreateFavorite={handleCreateFavorite}
         favoritesList={favoritesList}
       />
-      <h1 className="calendar-text">Calendar</h1>
-      <Calendar />
+      {/* <h1 className="calendar-text">Calendar</h1> */}
+      {/* <Calendar /> */}
       <Modal show={isEventsShowVisible} onClose={handleClose}>
-        <EventsShow
-          event={currentEvent}
-          onUpdateEvent={handleUpdateEvent}
-          onDestroyEvent={handleDestroyEvent}
-          onCreateFavorite={handleCreateFavorite}
-        />
+        <EventsShow event={currentEvent} onUpdateEvent={handleUpdateEvent} onDestroyEvent={handleDestroyEvent} />
       </Modal>
     </div>
   );
