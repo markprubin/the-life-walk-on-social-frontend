@@ -17,29 +17,29 @@ export function EventsNew() {
   };
 
   return (
-    <div>
-      <h1>New Event</h1>
+    <div class="container text-center">
+      <h1>Let's Create Connection!</h1>
       <form onSubmit={handleSubmit}>
-        <div class="input-group mb-3">
-          Name: <input name="name" type="text" />
+        <div class="my-3">
+          Name: <input class="form-control" name="name" type="text" />
         </div>
-        <div class="input-group mb-3">
+        <div>
           <span>
             Description of Event: <textarea name="description" class="form-control"></textarea>
           </span>
         </div>
-        <div class="input-group mb-3">
-          Address: <input name="address" type="text" />
+        <div class="my-3">
+          Address: <input class="form-control" name="address" type="text" />
         </div>
-        <div class="input-group mb-3">
-          Image URL: <input name="image_url" type="text" />
+        <div class="my-3">
+          Image URL: <input class="form-control" name="image_url" type="text" />
         </div>
 
-        <div class="input-group mb-3">
-          Start of Event: <input name="start_time" type="datetime-local" />
+        <div class="my-3">
+          Start of Event: <input class="form-control" name="start_time" type="datetime-local" />
         </div>
-        <div class="input-group mb-3">
-          End of Event: <input name="end_time" type="datetime-local" />
+        <div class="my-3">
+          End of Event: <input class="form-control" name="end_time" type="datetime-local" />
         </div>
 
         <button type="submit">Create Event</button>

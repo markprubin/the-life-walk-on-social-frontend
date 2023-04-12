@@ -53,6 +53,7 @@ export function Home() {
     axios.delete(`http://localhost:3000/events/${event.id}.json`).then((response) => {
       setEvents(events.filter((p) => p.id !== event.id));
       handleClose();
+      handleIndexEvents();
     });
   };
   // ADD FAVORITE

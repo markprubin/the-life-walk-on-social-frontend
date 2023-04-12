@@ -5,6 +5,7 @@ export function ListItem(props) {
     return (
       <li key={props.title}>
         <h4>{props.title}</h4>
+        <h5>{props.date}</h5>
         <button onClick={() => props.handleDestroyFavorite(props.favorite)}>
           <svg
             xmlns="http://www.w3.org/2000/svg"

@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { useMemo } from "react";
 import { ListItem } from "./ListItem.jsx";
+import "./Favorites.css";
 
 export function FavoritesIndex() {
   const [favorites, setFavorites] = useState([]);
@@ -17,7 +18,6 @@ export function FavoritesIndex() {
     console.log("handleDestroyFavorite");
     axios.delete(`http://localhost:3000/favorites/${favorite.id}.json`).then((response) => {
       setFavorites(favorites.filter((f) => f.id !== favorite.id));
-      handleClose();
     });
   };
 
@@ -29,12 +29,10 @@ export function FavoritesIndex() {
         return;
       }
       return (
-        // <div key={favorite.id}>
-        //   <h2>{favorite.name}</h2>
-        // </div>
         <ListItem
           favorite={favorite}
           title={favorite.name}
+          date={favorite.start_time}
           style="favorite"
           handleDestroyFavorite={handleDestroyFavorite}
         />
@@ -42,9 +40,9 @@ export function FavoritesIndex() {
     });
   }, [favorites]);
   return (
-    <div>
-      <h1>Your Favorited Events</h1>
-      {favoritesList}
+    <div className="Favorites">
+      <h1 className="FavHeading text-center">Your Favorited Events</h1>
+      <div className="FavoritesList">{favoritesList}</div>
     </div>
   );
 }
