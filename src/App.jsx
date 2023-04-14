@@ -8,22 +8,66 @@ import { EventsNew } from "./EventsNew";
 import { Welcome } from "./Welcome";
 import { UsersIndex } from "./UsersIndex";
 import { Tasks } from "./Tasks";
+
 function App() {
   return (
-    <BrowserRouter>
-      <Header />
-      <Routes>
-        <Route path="/Home" element={<Home />} />
-        <Route path="/" element={<Welcome />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/favorites" element={<FavoritesIndex />} />
-        <Route path="/newevent" element={<EventsNew />} />
-        <Route path="/profile" element={<UsersIndex />} />
-        <Route path="/tasks" element={<Tasks />} />
-      </Routes>
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route
+            path="/Home"
+            element={
+              <>
+                <Header /> <Home />
+              </>
+            }
+          />
+          <Route path="/" element={<Welcome />} />
+          <Route
+            path="/about"
+            element={
+              <>
+                <Header /> <About />
+              </>
+            }
+          />
+          <Route
+            path="/favorites"
+            element={
+              <>
+                <Header /> <FavoritesIndex />
+              </>
+            }
+          />
+          <Route
+            path="/newevent"
+            element={
+              <>
+                <Header /> <EventsNew />
+              </>
+            }
+          />
+          <Route
+            path="/profile"
+            element={
+              <>
+                <Header /> <UsersIndex />
+              </>
+            }
+          />
+          <Route
+            path="/tasks"
+            element={
+              <>
+                <Header /> <Tasks />
+              </>
+            }
+          />
+        </Routes>
 
-      <Footer />
-    </BrowserRouter>
+        <Footer />
+      </BrowserRouter>
+    </>
   );
 }
 

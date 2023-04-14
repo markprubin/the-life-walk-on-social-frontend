@@ -3,7 +3,7 @@ import { EventsShow } from "./EventsShow";
 import { Modal } from "./Modal";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import Calendar from "./components/Calendar";
+import { useLocation } from "react-router-dom";
 
 export function Home() {
   const [events, setEvents] = useState([]);
@@ -11,6 +11,9 @@ export function Home() {
   const [currentEvent, setCurrentEvent] = useState({});
   const [favorites, setFavorites] = useState([]);
   const [favoritesList, setFavoritesList] = useState([]);
+
+  const location = useLocation();
+  console.log(location);
 
   const handleIndexEvents = () => {
     console.log("handleIndexEvents");
@@ -90,8 +93,6 @@ export function Home() {
         onCreateFavorite={handleCreateFavorite}
         favoritesList={favoritesList}
       />
-      {/* <h1 className="calendar-text">Calendar</h1> */}
-      {/* <Calendar /> */}
       <Modal show={isEventsShowVisible} onClose={handleClose}>
         <EventsShow event={currentEvent} onUpdateEvent={handleUpdateEvent} onDestroyEvent={handleDestroyEvent} />
       </Modal>
