@@ -93,7 +93,7 @@ export function Tasks() {
             checked={completed}
             onChange={handleComplete}
           />
-          <label class="form-check-label" for="exampleCheck1">
+          <label class="row mx-1 form-check-label" for="exampleCheck1">
             Already completed?
           </label>
         </div>

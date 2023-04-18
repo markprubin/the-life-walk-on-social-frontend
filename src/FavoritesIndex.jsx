@@ -28,7 +28,7 @@ export function FavoritesIndex() {
       if (favorite === null) {
         return;
       }
-      const date = new Date(favorite.event.start_time);
+      const date = new Date(favorite?.event.start_time);
       const formattedDate = date.toDateString("en-US");
       return (
         <ListItem
