@@ -8,6 +8,11 @@ This project is designed to create a social hub for former athletes to connect, 
 
 The backend of the application leverages Ruby on Rails API functionality to receive and send AJAX requests in a JSON format and React.js frontend with HTML and CSS, using React Bootstrap, React Router, and Material UI.
 
+## LIVE DEMO
+
+[Click here for the live demo](https://vimeo.com/846104295)
+
+
 ## Dependencies
 
 - Node Package Manager (NPM)
